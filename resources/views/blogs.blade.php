@@ -3,15 +3,18 @@
 @section('title', 'บทความ')
 
 @section('content')
-    <h2 class="text-center my-5">
-        บทความทั้งหมด</h2>
+    <div class="d-flex justify-content-between align-items-center my-5">
+        <h2>บทความทั้งหมด</h2>
+        <a href="/create" class="btn btn-primary">เขียนบทความใหม่</a>
+    </div>
     <table class="table table-bordered text-center">
         <thead>
             <tr>
                 <th scope="col">หัวข้อ</th>
                 <th scope="col">รายละเอียด</th>
                 <th scope="col">สถานะ</th>
-                <th scope="col">จัดการ</th>
+                <th scope="col">แก้ไขบทความ</th>
+                <th scope="col">ลบบทความ</th>
             </tr>
         </thead>
         <tbody>
@@ -21,14 +24,18 @@
                     <td>{{Str::limit($item->content, 10) }}</td>
                     <td>
                         @if ($item->status)
-                            <span class="btn btn-danger">ไม่เผยแพร่</span>
+                            <a href="{{route('change', $item->id)}}" class="btn btn-outline-success">เผยแพร่</a>
                         @else
-                            <span class="btn btn-success">เผยแพร่</span>
+                            <a href="{{route('change', $item->id)}}" class="btn btn-outline-danger">ฉบับร่าง</a>
                         @endif
                     </td>
-                    <td><a href="/blogs/delete/{{ $item->id }}" class="btn btn-danger"
-                            onclick="return confirm('คุณต้องการลบบทความนี้จริงหรือไม่?')">ลบ</a></td>
-
+                    <td>
+                        <a href="{{route('edit', $item->id)}}" class="btn btn-primary">แก้ไขบทความ</a>
+                    </td>
+                    <td>
+                        <a href="/blogs/delete/{{ $item->id }}" class="btn btn-danger"
+                            onclick="return confirm('คุณต้องการลบบทความนี้จริงหรือไม่?')">ลบ</a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

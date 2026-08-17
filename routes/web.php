@@ -30,4 +30,7 @@ Route::get('/abouts',[AdminController::class,"about"] )->name("abouts");
 Route::get('/blogs',[AdminController::class,"blog"] )->name("blogs");
 Route::get('/create',[AdminController::class,"create"] )->name("create");
 Route::post('/insert',[AdminController::class,"insert"] )->name("insert");
-Route::get('blogs/delete/{id}', [AdminController::class, 'delete']); 
+Route::get('blogs/delete/{id}', [AdminController::class, 'delete']);
+Route::get('/edit/{id}', [AdminController::class, 'edit'])->name('edit');
+Route::post('/update/{id}', [AdminController::class, 'update'])->name('update');
+Route::get('/change/{id}', [AdminController::class, 'change'])->name('change');
