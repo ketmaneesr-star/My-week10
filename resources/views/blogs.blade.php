@@ -26,7 +26,7 @@
                         @if ($item->status)
                             <a href="{{route('change', $item->id)}}" class="btn btn-outline-success">เผยแพร่</a>
                         @else
-                            <a href="{{route('change', $item->id)}}" class="btn btn-outline-danger">ฉบับร่าง</a>
+                            <a href="{{route('change', $item->id)}}" class="btn btn-outline-danger">ไม่เผยแพร่</a>
                         @endif
                     </td>
                     <td>
